@@ -14,7 +14,7 @@ void PTXuatHienNhieuNhat(DaySo a, int n);
 int phanTuGiaTriNhoNhat(DaySo a, int n);
 void cacSoHoanChinh(DaySo a, int n);
 void timAmLonNhat(DaySo a, int n);
-
+void timSoDuongNhoNhat(DaySo a, int n);
 
 
 
@@ -51,7 +51,16 @@ void choiseMenu(DaySo a,int choise, int n){
             timAmLonNhat(a, n);
             break;
         case 6:
-
+            timSoDuongNhoNhat(a,n);
+            // if(timSoDuongNhoVaVT(a, n) == 1){
+            //     cout << "mang co phan tu be nhat la " << timSoDuongNhoVaVT(a, n) << " va nam o vi tri 0 trong mang \n"; 
+            // }
+            // else if(timSoDuongNhoVaVT(a, n) == 0){
+            //    cout << "trong mang ko co phan tu co gia tri duong \n"; 
+            // }
+            // else{
+            //     cout << "phan tu nho nhat trong mang la " << timSoDuongNhoVaVT(a, n) << " va co vi tri la " ;
+            // }
             break;  
         case 7:
 
@@ -151,9 +160,6 @@ void timAmLonNhat(DaySo a, int n){
                 viTri = i;
             }
         }
-        
-           
-        
     }
     if(minVal == 0){
         cout << "trong mang ko co phan tu co gia tri am \n";
@@ -164,3 +170,40 @@ void timAmLonNhat(DaySo a, int n){
     }
 
 }
+
+
+
+   
+
+
+void timSoDuongNhoNhat(DaySo a, int n) {
+    int minDuong = -1;
+    int viTri = -1;
+    int countMinDuong = 0;  
+    for (int i = 0; i < n; i++) {
+        //long de ss 2 dk
+        if (a[i] > 0 && (minDuong == -1 || a[i] < minDuong)) {
+            minDuong = a[i];
+            viTri = i;
+        }
+    }
+
+    if (minDuong == -1) {
+        cout << "ko co gia tri duong trong mang nha." << endl;
+    }
+
+    
+        for (int i = 0; i < n; i++) {
+            if (a[i] == minDuong) {
+                countMinDuong++;
+            }
+        }
+    
+
+    if (countMinDuong == 1) {
+        cout << "So duong nho nhat: " << minDuong << " o vi tri " << viTri << endl;
+    } else {
+        cout << "mang co hai gia tri " << minDuong << " nen se ko co gia tri nho nhat" << endl;
+    }
+}
+
