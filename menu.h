@@ -1,5 +1,6 @@
 #include<iostream>
 #include<math.h>
+#include<cmath>
 
 #define MAX 1000
 
@@ -15,7 +16,7 @@ int phanTuGiaTriNhoNhat(DaySo a, int n);
 void cacSoHoanChinh(DaySo a, int n);
 void timAmLonNhat(DaySo a, int n);
 void timSoDuongNhoNhat(DaySo a, int n);
-
+void timPhanTuGanVoiX(DaySo a, int n, int x);
 
 
 
@@ -63,7 +64,10 @@ void choiseMenu(DaySo a,int choise, int n){
             // }
             break;  
         case 7:
-
+            cout << "hay nhap so x ma ban muon tim kiem gia tri gan nhat trong mang: ";
+            cin >> x;
+            
+            timPhanTuGanVoiX(a, n, x);
             break;
        
     }
@@ -207,3 +211,18 @@ void timSoDuongNhoNhat(DaySo a, int n) {
     }
 }
 
+
+
+void timPhanTuGanVoiX(DaySo a, int n, int x) {
+    int minSpace = abs(a[0] - x); 
+    int location = 0;  
+    //o day bien minSpace de tim kiem gia tri gan nhat con locations de khai bao vi tri va se in ra gia tri gan nhat tai location
+    for (int i = 1; i < n; i++) {
+        int space = abs(a[i] - x); 
+        if (space < minSpace) {  
+            location = i;
+        }
+    }
+    
+    cout << "phan tu co gia tri gan " << x << " la: " << a[location] << " va o VT " << location << endl;
+}
